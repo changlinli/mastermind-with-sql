@@ -73,22 +73,22 @@ B, "3"
 
 
 WITH last_guess AS (
-	SELECT 'a' AS color, 0 AS idx
+	SELECT 'Z1' AS color, 0 AS idx
 	UNION
-	SELECT 'b' AS color, 1 AS idx
+	SELECT 'Z2' AS color, 1 AS idx
 	UNION
-	SELECT 'c' AS color, 2 AS idx
+	SELECT 'Z3' AS color, 2 AS idx
 	UNION
-	SELECT 'd' AS color, 3 AS idx
+	SELECT 'Z4' AS color, 3 AS idx
 ),
 actual_answer AS (
-	SELECT 'a' AS color, 0 AS idx
+	SELECT 'K1' AS color, 0 AS idx
 	UNION
-	SELECT 'b' AS color, 1 AS idx
+	SELECT 'K2' AS color, 1 AS idx
 	UNION
-	SELECT 'c' AS color, 2 AS idx
+	SELECT 'K3' AS color, 2 AS idx
 	UNION
-	SELECT 'd' AS color, 3 AS idx
+	SELECT 'K4' AS color, 3 AS idx
 ),
 guess_vs_answer AS (
 	SELECT l.color AS guess_color
@@ -121,7 +121,9 @@ total_num_of_white_pins AS (
 	SELECT SUM(num_of_white_pins) AS total_num_of_white_pins FROM per_color_num_of_white_pins
 ),
 final_answer AS (
-	SELECT printf('%.*c', total_num_of_black_pins, 'x') || printf('%.*c', total_num_of_white_pins, 'x')
+	SELECT 
+        CASE WHEN total_num_of_black_pins = 0 THEN '' ELSE printf('%.*c', total_num_of_black_pins, 'b') END 
+            || CASE WHEN total_num_of_white_pins = 0 THEN '' ELSE printf('%.*c', total_num_of_white_pins, 'w') END
 	FROM total_num_of_black_pins INNER JOIN total_num_of_white_pins ON TRUE
 )
 SELECT * FROM final_answer
