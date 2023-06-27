@@ -1,0 +1,11 @@
+./wrapper.sh setup
+./wrapper.sh guess R R R R
+./wrapper.sh guess R B B B
+./wrapper.sh guess B R B B
+./wrapper.sh guess R G Y V
+./wrapper.sh guess R G R R
+./wrapper.sh guess R Y G G
+./wrapper.sh guess R Y P P
+./wrapper.sh guess R Y P R
+./wrapper.sh guess R Y R P
+./wrapper.sh guess R G P P
