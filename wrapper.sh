@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 COLORS=('R' 'B' 'Y' 'G' 'P' 'V')
 
