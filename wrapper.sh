@@ -53,8 +53,3 @@ main () {
 }
 
 main "$@"
-#setup
-#guess R R R R
-
-## TODO fix paths
-#sqlite3 test.db < script.sql
